@@ -19,13 +19,11 @@ public class Program {
 		bill.softDrink = sc.nextInt();
 		System.out.print("Quantidade de espetinhos: ");
 		bill.barbecue = sc.nextInt();
-		
-
-		
+				
 		//Saída:
-		System.out.print(bill);
 		
-		
+		System.out.print(bill.toString(bill.cover()));
+				
 		sc.close();
 	}
 
