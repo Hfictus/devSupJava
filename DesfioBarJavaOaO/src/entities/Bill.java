@@ -34,29 +34,26 @@ public class Bill {
 	}
 	
 	public String toString(double couvert) {
-		if (couvert > 0.0) {
-			return  String.format(
-						"\n"
-						+ "RELATÓRIO:\n"
-						+ "Consumo = R$ %.2f\n"
-						+ "Couvert = R$ %.2f\n"
-						+ "Ingresso = R$ %.2f\n\n"
-						+ "Valor a pagar = R$ %.2f\n"
-						,feeding(), cover()
-						, ticket(), total()
-					);
+		String isentOrNot;
+		
+		if(couvert > 0.0) {
+			isentOrNot = String.format("Couvert = R$ %.2f", couvert);
+			
 		}
 		else {
-			return String.format(
-						"\n"
-						+ "RELATÓRIO:\n"
-						+ "Consumo = R$ %.2f\nIsento de couvert \n"
-						+ "Ingresso = R$ %.2f\n\n"
-						+ "Valor a pagar = R$ %.2f\n"
-						, feeding(), ticket(), total()
-					);
+			isentOrNot = "Isento de couvert";
 		}
-				
+		
+		return  String.format(
+				"\n"
+				+ "RELATÓRIO:\n"
+				+ "Consumo = R$ %.2f\n"
+				+ "%s \n"
+				+ "Ingresso = R$ %.2f\n\n"
+				+ "Valor a pagar = R$ %.2f\n"
+				,feeding(), isentOrNot
+				, ticket(), total()
+			    );
 	}
 	
 }
