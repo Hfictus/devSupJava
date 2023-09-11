@@ -49,3 +49,14 @@ public class Bill {
 	}
 	
 }
+/*Gabarito (diferenças):
+ * ...
+ * public double ticket() {
+		if (gender == 'F' || gender == 'f') {
+			return 8.0;
+		}
+		else {
+			return 10.0;
+		}
+	}
+ */ 

@@ -19,12 +19,30 @@ public class Program {
 		bill.softDrink = sc.nextInt();
 		System.out.print("Quantidade de espetinhos: ");
 		bill.barbecue = sc.nextInt();
-				
-		//Saída:
 		
+		//Saída:
 		System.out.print(bill.toString(bill.cover()));
 				
 		sc.close();
 	}
 
 }
+/*Gabarito (a saída é diferente):
+ * 		...
+ * 		System.out.println();
+ *		System.out.println("RELATÓRIO:");
+ *		System.out.printf("Consumo = R$ %.2f%n", bill.feeding());
+ *		
+ *		if (bill.cover() == 0.0) {
+ *			System.out.println("Isento de Couvert");
+ *		}
+ *		else {
+ *			System.out.printf("Couvert = R$ %.2f%n", bill.cover());			
+ *		}
+ *		
+ *		System.out.printf("Ingresso = R$ %.2f%n", bill.ticket());
+ *		System.out.println();
+ *		System.out.printf("Valor a pagar = R$ %.2f%n", bill.total());
+ *
+ *		sc.close();
+ */
