@@ -38,12 +38,17 @@ public class Program {
 		System.out.print("Quantos turnos você deseja executar? ");
 		int rounds = sc.nextInt();
 		
-		for(int i = 0; i < rounds; i++) {
-			
-			System.out.print(a);
-			System.out.print(b);
-			
+		int i = 0;
+		while (i < rounds && a.life > 0 && b.life > 0) {
+			a.takeDamage(b.getAttack());
+			b.takeDamage(a.getAttack);
+			System.out.println("\nResultado do turno " + (i+1));
+			System.out.print(a.status());
+			System.out.print(b.status());
+			i++;
 		}
+		
+		System.out.println("\nFIM DE JOGO\n");
 		
 		sc.close();
 	}
