@@ -9,7 +9,7 @@ public class Program {
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
-		Champion a = null, b = null;
+		Champion champion1 = null, champion2 = null;
 		String firstOrSec = "primeiro";
 		
 		for(int i = 0; i < 2; i++) {
@@ -25,12 +25,12 @@ public class Program {
 			System.out.println();
 			switch(i) {
 			case 0:
-				a = new Champion(name, life, attack, armor);
+				champion1 = new Champion(name, life, attack, armor);
 				firstOrSec = "segundo";
 				sc.nextLine();
 				break;
 			case 1:
-				b = new Champion(name, life, attack, armor);
+				champion2 = new Champion(name, life, attack, armor);
 				break;
 			}
 		}
@@ -39,16 +39,16 @@ public class Program {
 		int rounds = sc.nextInt();
 		
 		int i = 0;
-		while (i < rounds && a.life > 0 && b.life > 0) {
-			a.takeDamage(b.getAttack());
-			b.takeDamage(a.getAttack);
-			System.out.println("\nResultado do turno " + (i+1));
-			System.out.print(a.status());
-			System.out.print(b.status());
+		while (i < rounds && champion1.getLife() > 0 && champion2.getLife() > 0) {
+			champion1.takeDamage(champion2.getAttack());
+			champion2.takeDamage(champion1.getAttack());
+			System.out.println("\nResultado do turno " + (i+1) + ":");
+			System.out.print(champion1.status());
+			System.out.print(champion2.status());
 			i++;
 		}
 		
-		System.out.println("\nFIM DE JOGO\n");
+		System.out.println("\nFIM DO COMBATE\n");
 		
 		sc.close();
 	}
