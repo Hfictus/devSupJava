@@ -6,12 +6,13 @@ public class Champion {
 	private int attack;
 	private int armor;
 	
-	public Champion(String name, int life, int attack, int armor) {
+	public Champion(String name, int life, int damage, int armor) {
 		this.name = name;
 		this.life = life;
-		this.attack = attack;
+		attack = damage;
 		this.armor = armor;
 	}
+		
 	
 	public String getName() {
 		return this.name;
@@ -29,21 +30,18 @@ public class Champion {
 		return this.life;
 	}
 	
-	public void setLife(int life) {
-		this.life = life;
-	}
-	
+		
 	public void takeDamage(int attack) {
 		if(attack > getArmor()) {
-			setLife(getLife() - (attack - getArmor()));
+			this.life -= (attack - getArmor());
 		}
 		else {
-			setLife(getLife() - 1);
+			this.life -= 1;
 		}
 		
 		
 		if(getLife() < 0) {
-			setLife(0);
+			this.life = 0;
 		}
 		
 	}
