@@ -39,9 +39,9 @@ public class Program {
 		int rounds = sc.nextInt();
 		
 		int i = 0;
-		while (i < rounds && champion1.getLife() > 0 && champion2.getLife() > 0) {
-			champion1.takeDamage(champion2.getAttack());
-			champion2.takeDamage(champion1.getAttack());
+		while (i < rounds && champion1.getLife() != 0 && champion2.getLife() != 0) {
+			champion1.takeDamage(champion2);
+			champion2.takeDamage(champion1);
 			System.out.println("\nResultado do turno " + (i+1) + ":");
 			System.out.print(champion1.status());
 			System.out.print(champion2.status());

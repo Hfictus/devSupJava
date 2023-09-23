@@ -15,47 +15,71 @@ public class Champion {
 		
 	
 	public String getName() {
-		return this.name;
+		return name;
+	}
+	public void getName(String name) {
+		this.name = name;
 	}
 	
 	public int getAttack() {
-		return this.attack;
+		return attack;
+	}
+	public void setAttack(int attack) {
+		this.attack = attack;
 	}
 	
 	public int getArmor() {
-		return this.armor;
+		return armor;
+	}
+	public void setArmor(int armor) {
+		this.armor = armor;
 	}
 	
 	public int getLife() {
-		return this.life;
+		return life;
 	}
-	
+	public void setLife(int life) {
+		this.life = life;
+	}
 		
-	public void takeDamage(int attack) {
-		if(attack > getArmor()) {
-			this.life -= (attack - getArmor());
+	public void takeDamage(Champion other) {
+		
+		int damage = other.attack - armor;
+		if(damage > 0) {
+			life -= damage;
 		}
 		else {
-			this.life -= 1;
+			life -= 1;
 		}
 		
 		
-		if(getLife() < 0) {
-			this.life = 0;
+		if(life < 0) {
+			life = 0;
 		}
 		
 	}
 	
 	public String status() {
-		String lifeStatus = "";
-		if(getLife() == 0) {
-			lifeStatus = " (morreu)";
-		}
+		
+		String lifeStatus = (getLife() == 0)?"(morreu)":"";
 		
 		return String.format(
-			    "%s: "
-				+ "%d de vida%s\n"
-			    , getName(), getLife(), lifeStatus
-			   );
+					"%s: "
+					 + "%d de vida %s\n"
+					 , getName(), getLife(), lifeStatus
+		       );
 	}
 }
+/*Método takeDamage() do gabarito:
+ * public void takeDamage(Champion other) {
+ *		int damage = other.attack - armor;
+ *		if (damage < 1) {
+ *			damage = 1;
+ *		}
+ *		
+ *		life = life - damage;
+ *		if (life < 0) {
+ *			life = 0;
+ *		}
+ *	}
+ */ 
