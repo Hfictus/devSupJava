@@ -16,6 +16,7 @@ public class Program {
 		System.out.print("Quantos contribuintes você vai digitar? ");
 		int n = sc.nextInt();
 		
+		
 		for(int i = 0; i < n; i++) {
 			System.out.printf("\nDigite os dados do %dº contribuinte:\n",i+1);
 			System.out.print("Renda anual coom salário: ");
@@ -34,8 +35,8 @@ public class Program {
 			//list.add(new TaxPayer(salary, services, capital, health, education));
 		}
 		
+		//salary tax
 		
-		//...?
 		
 		/*for(int i = 0; i < n; i++) {
 			System.out.printf("\nResumo do %dº contribuinte:\n",i+1);
@@ -46,6 +47,7 @@ public class Program {
 			System.out.printf("\nResumo do %dº contribuinte:\n",++i);
 			System.out.println(obj);
 		}
+		
 		
 		sc.close();
 	}
