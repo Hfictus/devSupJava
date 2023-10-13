@@ -29,15 +29,22 @@ public class Program {
 			System.out.print("Gastos educacionais: ");
 			Double education = sc.nextDouble();
 			
-			list.add(new TaxPayer(salary, services, capital, health, education));
+			TaxPayer tPayer = new TaxPayer(salary, services, capital, health, education);
+			list.add(tPayer);
+			//list.add(new TaxPayer(salary, services, capital, health, education));
 		}
 		
 		//salary tax
 		
 		
-		for(int i = 0; i < n; i++) {
+		/*for(int i = 0; i < n; i++) {
 			System.out.printf("\nResumo do %dº contribuinte:\n",i+1);
 			System.out.println(list.get(i));
+		}*/
+		int i = 0;
+		for(TaxPayer obj : list) {
+			System.out.printf("\nResumo do %dº contribuinte:\n",++i);
+			System.out.println(obj);
 		}
 		
 		sc.close();
