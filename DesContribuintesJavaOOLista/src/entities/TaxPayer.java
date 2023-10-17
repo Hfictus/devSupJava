@@ -6,20 +6,19 @@ public class TaxPayer {
 	private Double servicesIncome;
 	private Double capitalIncome;
 	private Double healthSpending;
-	private Double educatioinSpending;
+	private Double educatioinSpending;//ou double
 	
 	public TaxPayer() {
-		
 	}
 	public TaxPayer(Double salaryIncome, Double servicesIncome, Double capitalIncome, Double healthSpending, Double educatioinSpending) {
-		this.salaryIncome = salaryIncome;
-		this.servicesIncome = servicesIncome;
-		this.capitalIncome = capitalIncome;
+		this.salaryIncome = salaryIncome;//ou double nos parâmetros
+		this.servicesIncome = servicesIncome;//se também nos
+		this.capitalIncome = capitalIncome;  //atributos
 		this.healthSpending = healthSpending;
 		this.educatioinSpending = educatioinSpending;
 	}
-	
-	public double getSalaryIncome() {
+	//ou Double, ou double em get e set
+	public Double getSalaryIncome() {
 		return salaryIncome;
 	}
 	public void setSalaryIncome(Double salaryIncome) {
@@ -68,7 +67,8 @@ public class TaxPayer {
 			gTax = salaryIncome * 0.20;
 		}
 		
-		return gTax;
+		return gTax;//ao invés deste, poderia haver 1 return
+		            //em cada bloco do if.
 	}
 	public double servicesTax() {
 		return servicesIncome * 0.15;
@@ -91,6 +91,20 @@ public class TaxPayer {
 		}
 		return rebate;
 	}
+	/*Ou:
+	 * public double taxRebate() {
+		double spendings = healthSpending + educationSpending;
+		double max = 0.3 * grossTax();
+		
+		if (spendings > max) {
+			return max;
+		}
+		else {
+			return spendings;
+		}
+	}
+	 */
+	
 	public double netTax() {
 		return grossTax() - taxRebate();
 	}
