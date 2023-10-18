@@ -55,6 +55,8 @@ public class Program {
 		
 		/*Forma de saída quando não há toString()
 		 * na classe TaxPayer (do gabarito):
+		 * Obs.: Essa saída é mais adequada porque permite
+		 * que a classe seja reutilizada.
 		 * for (int i = 0; i < n; i++) {
 			System.out.println();
 			System.out.println("Resumo do " + (i + 1) + "o contribuinte:");
