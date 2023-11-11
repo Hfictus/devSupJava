@@ -37,7 +37,7 @@ public class Department {
 	public Address getAddress() {
 		return address;
 	}
-	public void setAddress(Address address) {
+	public void setAddress(Address address, String phone) {
 		this.address = address;
 	}
 	

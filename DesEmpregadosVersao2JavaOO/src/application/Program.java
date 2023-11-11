@@ -3,9 +3,7 @@ package application;
 import java.util.Locale;
 import java.util.Scanner;
 
-import entities.Address;
 import entities.Department;
-import entities.Employee;
 
 public class Program {
 
@@ -23,8 +21,12 @@ public class Program {
 		System.out.print("Telefone: ");
 		String departmentPhone = sc.nextLine();
 		
-		Address address = new Address(departmentEmail, departmentPhone);
-		Department depart = new Department(departmentName, payDay, address);
+		//Address address = new Address(departmentEmail, departmentPhone);
+		Department depart = new Department(
+				departmentName, payDay, 
+				depart.setAddress(departmentEmail, departmentPhone)
+		
+		);
 		
 		System.out.print("Quantos funcionários tem o departamento? ");
 		int n = sc.nextInt();
