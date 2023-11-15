@@ -25,6 +25,7 @@ public class Program {
 		
 		Address address = new Address(departmentEmail, departmentPhone);
 		Department depart = new Department(departmentName, payDay, address);
+		//ou ...payDay, new Address(departmentEmail,...));
 		
 		System.out.print("Quantos funcionários tem o departamento? ");
 		int n = sc.nextInt();
@@ -36,7 +37,7 @@ public class Program {
 			System.out.print("Salário: ");
 			double employeeSalary = sc.nextDouble();
 			Employee employee = new Employee(employeeName, employeeSalary);
-			depart.addEmployee(employee);
+			depart.addEmployee(employee);//ou <- (new Employee(...));
 		}
 		
 		showReport(depart);
@@ -45,6 +46,20 @@ public class Program {
 	}
 	
 	private static void showReport(Department depart) {
-		System.out.println(depart.toString());
+		System.out.println(depart);//depart.toString(): opcional
 	}
+	/*Solução do gabarito para o método stático:
+	 * private static void showReport(Department dept) {
+	 *  	System.out.println("FOLHA DE PAGAMENTO:");
+	 *		System.out.printf("Departamento " + dept.getName() + " = R$ %.2f%n", dept.payroll());
+	 *		System.out.println("Pagamento realizado no dia " + dept.getPayDay());
+	 *		System.out.println("Funcionários:");
+	 *		for (Employee emp : dept.getEmployees()) {
+	 *			System.out.println(emp.getName());
+	 *		}
+	 *		System.out.println("Para dúvidas favor entrar em contato: " + dept.getAddress().getEmail());
+	 *}objeto -> atributo
+	 *objeto -> subobjeto -> atributo
+	 */
+	
 }

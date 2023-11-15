@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Department {
 	private String name;
-	private Integer payDay;
+	private Integer payDay;//int -> no gabarito
 	
 	private Address address;
 	
@@ -13,7 +13,7 @@ public class Department {
 	
 	public Department() {
 	}
-
+									//int -> no gabarito
 	public Department(String name, Integer payDay, Address address) {
 		this.name = name;
 		this.payDay = payDay;
@@ -26,7 +26,7 @@ public class Department {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+	     //int -> no gabarito
 	public Integer getPayDay() {
 		return payDay;
 	}
@@ -40,6 +40,8 @@ public class Department {
 	public void setAddress(Address address) {
 		this.address = address;
 	}
+	
+	//no gabarito foi colocado o getEmployees()
 	
 	public void addEmployee(Employee employee) {
 		employees.add(employee);
@@ -55,6 +57,8 @@ public class Department {
 		}
 		return totalPayRoll;
 	}
+	
+	//no gabarito não foi criado um toString() na classe Department
 	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();

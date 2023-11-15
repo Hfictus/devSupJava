@@ -2,11 +2,11 @@ package entities;
 
 public class Employee {
 	private String name;
-	private Double salary;
+	private Double salary;//double -> no gabarito
 	
 	public Employee() {
 	}
-	
+								//double -> no gabarito
 	public Employee(String name, Double salary) {
 		this.name = name;
 		this.salary = salary;
@@ -18,7 +18,7 @@ public class Employee {
 	public void setName(String name) {
 		this.name = name;
 	}
-
+	     //double -> no gabarito
 	public Double getSalary() {
 		return salary;
 	}
