@@ -11,6 +11,10 @@ import entities.HourContract;
 import entities.Worker;
 import entities.enums.WorkerLevel;
 
+/**
+ * @author Gerson
+ *
+ */
 public class Program {
 
 	public static void main(String[] args) throws ParseException {
@@ -60,7 +64,8 @@ public class Program {
 		System.out.println(worker.income(year, month));
 		
 		
-		sc.close();
+	sc.close();
 	}
 
 }
+

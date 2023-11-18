@@ -5,5 +5,5 @@
  * @author Gerson
  *
  */
-module ExEnumComposicaoWorkerJavaOO {
+module AulaHerancaPolimorfismoJOO {
 }
