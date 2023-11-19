@@ -74,6 +74,7 @@ public class Program {
 		
 		sc.close();
 	}
+	//char x = statusProduct:
 	public static boolean addNameAndPrice(char x) {
 		return x == 'c' || x == 'u' || x == 'i';
 	}

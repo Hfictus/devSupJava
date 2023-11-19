@@ -6,7 +6,9 @@ import java.util.Date;
 public class UsedProduct extends Product {
 	
 	
-	//private static final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	/*private final SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+	 * ou private static final...
+	 */
 	
 	public static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 			
