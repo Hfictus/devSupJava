@@ -31,7 +31,7 @@ public class Individual extends TaxPayer {
 		}
 		
 		if(healthExpenditures > 0.0) {
-			individualTotalTax += healthExpenditures * 0.50; 
+			individualTotalTax -= healthExpenditures/2; 
 		}
 		
 		return individualTotalTax;

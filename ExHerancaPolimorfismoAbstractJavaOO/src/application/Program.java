@@ -46,10 +46,9 @@ public class Program {
 				break;
 			}
 		}
-		
-		System.out.println();
+				
 		System.out.println(taxesPaid(list));
-		System.out.println(totalTax(list));
+		System.out.printf("TOTAL TAXES: $ %.2f\n", totalTax(list));
 		
 		sc.close();
 	}
