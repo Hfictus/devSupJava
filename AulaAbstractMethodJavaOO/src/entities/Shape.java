@@ -20,6 +20,7 @@ public abstract class Shape {
 		this.color = color;
 	}
 	
+	//método abstrato - sua presença exige que a classe seja abstrata
 	public abstract double area();
 	
 	
