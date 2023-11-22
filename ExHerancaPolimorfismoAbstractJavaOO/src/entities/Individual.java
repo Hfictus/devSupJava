@@ -30,9 +30,13 @@ public class Individual extends TaxPayer {
 			individualTotalTax = getAnualIncome() * 0.25;
 		}
 		
-		if(healthExpenditures > 0.0) {
-			individualTotalTax -= healthExpenditures/2; 
+		if(healthExpenditures > 0.0 && healthExpenditures < getAnualIncome()) {
+			 individualTotalTax -= healthExpenditures/2; 
 		}
+		else {
+			individualTotalTax = 0.0;
+		}
+		
 		
 		return individualTotalTax;
 	}
