@@ -6,6 +6,8 @@ import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Lesson;
+import entities.Task;
+import entities.Video;
 
 public class Program {
 	
@@ -19,7 +21,7 @@ public class Program {
 		int classes = sc.nextInt();
 		
 		for(int i = 1; i <= classes; i++) {
-			System.out.println("Dados da " + i + "ª aula:");
+			System.out.println("\nDados da " + i + "ª aula:");
 			System.out.print("Conteúdo ou tarefa (c/t)? ");
 			char classType = sc.next().charAt(0);
 			if(classType == 'c' || classType == 't') {
@@ -45,16 +47,25 @@ public class Program {
 			}
 			else {
 				i--;
-				System.out.println("Opção inválida, tente novamente.");
+				sorryMaster();
 			}
 		}
 		
+		int durationCourse = 0;
+		for(Lesson lesson: list) {
+			durationCourse += lesson.duration();
+		}
 		
-		
-		
+		System.out.println("\nDURAÇÃO TOTAL DO CURSO = " + durationCourse + " segundos");
 		
 		
 		
 		sc.close();
+	}
+	public static void sorryMaster() {
+		System.out.println("Desculpe professor(a), precisava fazer\n"
+				+ "algo para o caso de um valor inválido.\n"
+				+ "Poderia tentar novamente? Obrigado."
+		);
 	}
 }

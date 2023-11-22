@@ -27,8 +27,7 @@ public class Video extends Lesson {
 	public void setSeconds(Integer seconds) {
 		this.seconds = seconds;
 	}
-	
-	
+		
 	@Override
 	public int duration() {
 		return seconds;
