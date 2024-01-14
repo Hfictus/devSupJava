@@ -5,17 +5,15 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import entities.Sale;
 
-public class Program {
+public class Program2 {
 
 	public static void main(String[] args) {
 		Locale.setDefault(Locale.US);
@@ -23,9 +21,8 @@ public class Program {
 		
 		/*System.out.print("Entre o caminho do arquivo: ");
 		String path = sc.nextLine();*/
-		String path = "c:\\temp\\in.csv";
 		
-		try(BufferedReader br = new BufferedReader(new FileReader(path))) {
+		try(BufferedReader br = new BufferedReader(new FileReader("c:\\a\\in.csv"))) {
 			List<Sale> sale = new ArrayList<>();
 			
 			String line = br.readLine();
@@ -38,22 +35,11 @@ public class Program {
 				));
 				line = br.readLine();
 			}
-			
-			List<Sale> sales = sale.stream().filter(s -> s.getYear() == 2016)
+			List<Sale> sales = sale.stream().filter(x -> x.getYear() == 2016)
 				.sorted(Comparator.comparingDouble(Sale::averagePrice).reversed())
-				.collect(Collectors.toList());
-			
-			Stream<Sale> topFiveSales = sales.stream().limit(5);
-			
+				.limit(5).collect(Collectors.toList());
 			System.out.println("Cinco primeiras vendas de 2016 de maior preço médio:");
-			System.out.println(Arrays.toString(topFiveSales.toArray()));
-					
-			double loganSeller = sales.stream()
-					.filter(s -> (s.getSeller().equals("Logan") && 
-					(s.getMonth() == 1 || s.getMonth() == 7)))
-					.map(s -> s.getTotal()).reduce(0.0,(x,y) -> x + y);
-			
-			System.out.printf("Valor total vendido pelo vendedor Logan nos meses 1 e 7 = %.2f\n", loganSeller);
+			sales.forEach(System.out::println);
 			
 			
 		}
