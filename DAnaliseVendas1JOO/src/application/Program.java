@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Scanner;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import entities.Sale;
 
@@ -21,9 +20,9 @@ public class Program {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		/*System.out.print("Entre o caminho do arquivo: ");
-		String path = sc.nextLine();*/
-		String path = "c:\\temp\\in.csv";
+		System.out.print("Entre o caminho do arquivo: ");
+		String path = sc.nextLine();
+		//String path = "c:\\temp\\in.csv";
 		
 		try(BufferedReader br = new BufferedReader(new FileReader(path))) {
 			List<Sale> sale = new ArrayList<>();
@@ -39,21 +38,24 @@ public class Program {
 				line = br.readLine();
 			}
 			
+			//lista das 5 maiores vendas na ordem decrescente:
 			List<Sale> sales = sale.stream().filter(s -> s.getYear() == 2016)
 				.sorted(Comparator.comparingDouble(Sale::averagePrice).reversed())
-				.collect(Collectors.toList());
-			
-			Stream<Sale> topFiveSales = sales.stream().limit(5);
-			
-			System.out.println("Cinco primeiras vendas de 2016 de maior preço médio:");
-			System.out.println(Arrays.toString(topFiveSales.toArray()));
+				.limit(5).collect(Collectors.toList());
+						
+			//imprimir 5 primeiros elementos			
+			System.out.println("\nCinco primeiras vendas de 2016 de maior preço médio:");
+			sales.forEach(System.out::println);
 					
-			double loganSeller = sales.stream()
+			//Valor de vendas de Logan nos meses 1 e 7 de todos os anos:
+			double loganSales = sale.stream()
 					.filter(s -> (s.getSeller().equals("Logan") && 
 					(s.getMonth() == 1 || s.getMonth() == 7)))
 					.map(s -> s.getTotal()).reduce(0.0,(x,y) -> x + y);
 			
-			System.out.printf("Valor total vendido pelo vendedor Logan nos meses 1 e 7 = %.2f\n", loganSeller);
+			System.out.printf(
+			   "\nValor total vendido pelo vendedor Logan nos meses 1 e 7 = %.2f\n", loganSales
+			);
 			
 			
 		}

@@ -65,7 +65,7 @@ public class Sale {
 	@Override
 	public String toString() {
 		return  String.format(
-					"%d/%d, %s, %d, %.2f, pm = %.2f\n",
+					"%d/%d, %s, %d, %.2f, pm = %.2f",
 					month, year, seller, itens, total, averagePrice()
 				);
 	}

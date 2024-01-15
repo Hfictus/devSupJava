@@ -1,10 +1,11 @@
-//Uso de java.io com BufferedReader e FileReader.
+//estudo de outras possibilidades
 package application;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Locale;
@@ -19,28 +20,16 @@ public class Program2 {
 		Locale.setDefault(Locale.US);
 		Scanner sc = new Scanner(System.in);
 		
-		/*System.out.print("Entre o caminho do arquivo: ");
-		String path = sc.nextLine();*/
+		System.out.print("Entre o caminho do arquivo: ");
+		String path = sc.nextLine();
 		
-		try(BufferedReader br = new BufferedReader(new FileReader("c:\\a\\in.csv"))) {
-			List<Sale> sale = new ArrayList<>();
+		try {
 			
-			String line = br.readLine();
-			while(line != null) {
-				String[] fields = line.split(",");
-				sale.add(new Sale(Integer.parseInt(fields[0]),
-					Integer.parseInt(fields[1]),fields[2],
-					Integer.parseInt(fields[3]),
-					Double.parseDouble(fields[4])
-				));
-				line = br.readLine();
-			}
-			List<Sale> sales = sale.stream().filter(x -> x.getYear() == 2016)
-				.sorted(Comparator.comparingDouble(Sale::averagePrice).reversed())
-				.limit(5).collect(Collectors.toList());
-			System.out.println("Cinco primeiras vendas de 2016 de maior preço médio:");
-			sales.forEach(System.out::println);
+			List<Sale> sale = readSalesFromFile(path);
 			
+			printFiveSales2016(sale);
+			
+			printLoganSalesMonths1And7(sale);
 			
 		}
 		catch(IOException e) {
@@ -49,5 +38,40 @@ public class Program2 {
 		
 		sc.close();
 	}
+	private static List<Sale> readSalesFromFile(String path) throws IOException {
+		List<Sale> sale = new ArrayList<>();
+		
+		try(BufferedReader br = new BufferedReader(new FileReader(path))) {
+			String line = br.readLine();
+			while(line != null) {
+				String[] fields = line.split(",");
+				sale.add(new Sale(
+						Integer.parseInt(fields[0]),
+						Integer.parseInt(fields[1]),
+						fields[2],
+						Integer.parseInt(fields[3]),
+						Double.parseDouble(fields[4])
+				));
+				line = br.readLine();
+			}
+			
+		}
+		return sale;
+	}
 
+	private static void printFiveSales2016(List<Sale> sale) {
+		List<Sale> sales2016 = sale.stream().filter(s -> s.getYear() == 2016)
+				.sorted(Comparator.comparingDouble(Sale::averagePrice).reversed())
+				.limit(5).collect(Collectors.toList());
+		System.out.println("\nCinco primeiras vendas de 2016 de maior preço médio:");
+		sales2016.forEach(System.out::println);
+	}
+	private static void printLoganSalesMonths1And7(List<Sale> sale) {
+		double loganSales = sale.stream().filter(s -> (s.getSeller().equals("Logan")) && (s.getMonth() == 1 || s.getMonth() == 7))
+				.map(s -> s.getTotal()).reduce(0.0, (x,y) -> x + y);
+		
+		System.out.printf(
+			"\nValor total vendido pelo vendedor Logan nos meses 1 e 7 = %.2f\n", loganSales
+		);
+	}
 }
