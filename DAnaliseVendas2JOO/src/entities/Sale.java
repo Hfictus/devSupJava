@@ -57,23 +57,6 @@ public class Sale {
 	}
 	
 	@Override
-	public int hashCode() {
-		return Objects.hash(seller);
-	}
-	
-	@Override
-	public boolean equals(Object obj) {
-		if(this == obj) {
-			return true;
-		}
-		if(obj == null || getClass() != obj.getClass()) {
-			return false;
-		}
-		Sale other = (Sale) obj;
-		return Objects.equals(seller, other.seller);
-	}
-	
-	@Override
 	public String toString() {
 		return String.format("%s - R$ %.2f", seller, total);
 	}
