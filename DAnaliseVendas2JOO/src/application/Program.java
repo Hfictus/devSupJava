@@ -67,7 +67,8 @@ public class Program {
 						Collectors.summingDouble(Sale::getTotal)
 					)
 				);
-	}
+	}hr
+	
 		
 	
 	private static void printSellersList(Map<String, Double> sellersList) {
