@@ -4,7 +4,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -24,20 +23,12 @@ public class Program {
 		
 		try(BufferedReader br = new BufferedReader(new FileReader(filePath))) {
 			
-			List<Sale> fullSalesList = new ArrayList<>();
-			
-			String lineOfFile = br.readLine();
+			List<Sale> fullSalesList = fullSalesListInstantiation(br);
 						
-			while(lineOfFile != null) {
-				String[] fields = lineOfFile.split(",");
-				fullSalesList.add(salesObjectInstantiation(fields));
-				lineOfFile = br.readLine();
-			}
+			Map<String, Double> sellersList = totalSalesOfSellers(fullSalesList);
 			
-			Map<String, Double> sellersList = filteringList(fullSalesList);
+			printSellersList(sellersList);
 			
-			//uso de stream para calcular total de venda por vendedor
-			//sellersList = fullSalesList.stream()
 			
 		}
 		catch(IOException e) {
@@ -45,6 +36,17 @@ public class Program {
 		}
 		
 		sc.close();
+	}
+	
+	private static List<Sale> fullSalesListInstantiation(BufferedReader br) throws IOException {
+		List<Sale> fullSalesList = new ArrayList<>();
+		String lineOfFile = br.readLine();
+		while(lineOfFile != null) {
+			String[] fields = lineOfFile.split(",");
+			fullSalesList.add(salesObjectInstantiation(fields));
+			lineOfFile = br.readLine();
+		}
+		return fullSalesList;
 	}
 	
 	private static Sale salesObjectInstantiation(String[] fields) {
@@ -56,12 +58,22 @@ public class Program {
 				Double.parseDouble(fields[4])
 			);
 	}
-	private static Map<String,Double> filteringList(List<Sale> fullSalesList) {
-		Map<String,Double> toSellersList = new HashMap<>();
-		for(Sale sale: fullSalesList) {
-			toSellersList.put(sale.getSeller(),0.0);
-		}
-		return toSellersList;
+	
+	private static Map<String,Double> totalSalesOfSellers(List<Sale> fullSalesList) {
+		return fullSalesList.stream()
+				.collect(
+					Collectors.groupingBy(
+						Sale::getSeller,
+						Collectors.summingDouble(Sale::getTotal)
+					)
+				);
+	}
+	
+	private static void printSellersList(Map<String, Double> sellersList) {
+		System.out.println();
+		sellersList.forEach((seller,total) -> {
+			System.out.println(seller + ", " + String.format("%.2f", total));
+		});
 	}
 	
 }

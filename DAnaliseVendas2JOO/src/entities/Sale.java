@@ -51,14 +51,4 @@ public class Sale {
 	public void setTotal(Double total) {
 		this.total = total;
 	}
-	
-	public double averagePrice() {
-		return total / itens;
-	}
-	
-	@Override
-	public String toString() {
-		return String.format("%s - R$ %.2f", seller, total);
-	}
-	
 }
