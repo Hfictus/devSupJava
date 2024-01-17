@@ -68,6 +68,7 @@ public class Program {
 					)
 				);
 	}
+		
 	
 	private static void printSellersList(Map<String, Double> sellersList) {
 		System.out.println();
