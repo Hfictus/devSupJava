@@ -67,7 +67,7 @@ public class Program {
 						Collectors.summingDouble(Sale::getTotal)
 					)
 				);
-	}hr
+	}
 	
 		
 	
